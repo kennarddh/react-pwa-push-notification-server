@@ -26,14 +26,16 @@ export const Subscribe = (req, res) => {
 }
 
 export const Send = (req, res) => {
+	const { title, message } = req.body
+
 	SubscribeModel.find({})
 		.exec()
 		.then(subscriptions => {
 			subscriptions.forEach(subscription => {
 				webpush
 					.sendNotification(subscription, {
-						title: 'Title',
-						message: 'Message',
+						title,
+						message,
 					})
 					.catch(async err => {
 						if (err.statusCode === 404 || err.statusCode === 410) {
