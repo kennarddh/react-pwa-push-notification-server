@@ -19,8 +19,8 @@
 	},
 	"keywords": [
 		"express",
-		"boilerplate",
-		"express-boilerplate"
+		"web-push",
+		"pwa"
 	],
 	"author": "kennarddh",
 	"license": "ISC",
