@@ -34,10 +34,13 @@ export const Send = (req, res) => {
 		.then(subscriptions => {
 			subscriptions.forEach(subscription => {
 				webpush
-					.sendNotification(subscription.subscriptionObject, {
-						title,
-						message,
-					})
+					.sendNotification(
+						subscription.subscriptionObject,
+						JSON.stringify({
+							title,
+							message,
+						})
+					)
 					.catch(async err => {
 						if (err.statusCode === 404 || err.statusCode === 410) {
 							console.log(
