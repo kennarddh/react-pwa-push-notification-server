@@ -1,7 +1,7 @@
 {
-	"name": "express-boilerplate",
+	"name": "react-pwa-push-notification-server",
 	"version": "1.0.0",
-	"description": "Express boilerplate",
+	"description": "React PWA push notification server",
 	"main": "src/App.js",
 	"scripts": {
 		"build": "babel ./src --out-dir ./build",
