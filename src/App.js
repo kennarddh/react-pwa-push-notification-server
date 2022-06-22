@@ -2,6 +2,8 @@ import 'dotenv/config'
 
 import express from 'express'
 
+import webPush from 'web-push'
+
 // Middleware
 import cors from 'cors'
 import bodyParser from 'body-parser'
@@ -30,6 +32,12 @@ app.use(cors())
 db.on('error', error => {
 	console.log(`MongoDB connection error: ${error}`)
 })
+
+webPush.setVapidDetails(
+	'mailto:example@yourdomain.org',
+	process.env.PUBLIC_VAPID_KEY,
+	process.env.PRIVATE_VAPID_KEY
+)
 
 // Router
 app.use('/api', ExampleRouter)
