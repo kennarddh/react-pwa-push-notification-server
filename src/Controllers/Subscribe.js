@@ -1,13 +1,26 @@
 import webPush from 'web-push'
 
+import SubscribeModel from '../Models/Subscribe'
+
 export const Subscribe = (req, res) => {
-	const subscription = req.body
+	const { subscriptionObject } = req.body
 
-	res.status(201).json({})
+	const subscription = new SubscribeModel({
+		subscriptionObject: {
+			endpoint: subscriptionObject.endpoint,
+			keys: {
+				p256dh: subscriptionObject.p256dh,
+				auth: subscriptionObject.auth,
+			},
+		},
+	})
 
-	const payload = JSON.stringify({ title: 'Section.io Push Notification' })
-
-	webPush
-		.sendNotification(subscription, payload)
-		.catch(err => console.error(err))
+	subscription
+		.save()
+		.then(() => {
+			res.status(201).json({ success: true })
+		})
+		.catch(() => {
+			res.status(500).json({ success: false })
+		})
 }
