@@ -33,7 +33,7 @@ export const Send = (req, res) => {
 		.then(subscriptions => {
 			subscriptions.forEach(subscription => {
 				webpush
-					.sendNotification(subscription, {
+					.sendNotification(subscription.subscriptionObject, {
 						title,
 						message,
 					})
