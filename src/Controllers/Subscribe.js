@@ -9,8 +9,8 @@ export const Subscribe = (req, res) => {
 		subscriptionObject: {
 			endpoint: subscriptionObject.endpoint,
 			keys: {
-				p256dh: subscriptionObject.p256dh,
-				auth: subscriptionObject.auth,
+				p256dh: subscriptionObject.keys.p256dh,
+				auth: subscriptionObject.keys.auth,
 			},
 		},
 	})
@@ -20,7 +20,8 @@ export const Subscribe = (req, res) => {
 		.then(() => {
 			res.status(201).json({ success: true })
 		})
-		.catch(() => {
+		.catch(err => {
+			console.error(err)
 			res.status(500).json({ success: false })
 		})
 }

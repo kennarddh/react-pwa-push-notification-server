@@ -40,6 +40,6 @@ webPush.setVapidDetails(
 )
 
 // Router
-app.use('/', SubscribeRouter)
+app.use('/api', SubscribeRouter)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
