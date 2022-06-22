@@ -48,9 +48,15 @@ export const Send = (req, res) => {
 								err
 							)
 
-							await SubscribeModel.deleteOne({
-								_id: subscriptions._id,
+							SubscribeModel.deleteOne({
+								_id: subscription._id,
 							})
+								.exec()
+								.then(() =>
+									console.log(
+										`success deleted subscriptions id: ${subscription._id}`
+									)
+								)
 						} else {
 							throw err
 						}
