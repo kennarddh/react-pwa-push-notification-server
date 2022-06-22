@@ -14,7 +14,7 @@ import helmet from 'helmet'
 import db from './Database'
 
 // Router
-import ExampleRouter from './Routes/Example'
+import SubscribeRouter from './Routes/Subscribe'
 
 const app = express()
 const PORT = process.env.PORT || 8080
@@ -40,6 +40,6 @@ webPush.setVapidDetails(
 )
 
 // Router
-app.use('/api', ExampleRouter)
+app.use('/', SubscribeRouter)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
